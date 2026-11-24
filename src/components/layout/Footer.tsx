@@ -1,35 +1,47 @@
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
-import { navLinks } from "@/data/content";
+import { services, solutions } from "@/data/offerings";
 import { products } from "@/data/products";
 
 /** "Curtain" footer: fixed behind the page and revealed as the content scrolls away. */
+const columns = [
+  { title: "Products", links: products.map((p) => ({ href: `/products/${p.slug}`, label: p.name })) },
+  { title: "Solutions", links: solutions.map((s) => ({ href: `/solutions/${s.slug}`, label: s.name })) },
+  { title: "Services", links: services.map((s) => ({ href: `/services/${s.slug}`, label: s.name })) },
+  {
+    title: "Company",
+    links: [
+      { href: "/about", label: "About" },
+      { href: "/case-studies", label: "Case Studies" },
+      { href: "/accessories", label: "Accessories & Spares" },
+      { href: "/downloads", label: "Downloads" },
+      { href: "/contact", label: "Contact" },
+    ],
+  },
+];
+
 export function Footer() {
   const year = new Date().getFullYear();
   return (
-    <div className="relative h-[820px] md:h-[560px]" style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" }}>
-      <footer className="fixed bottom-0 flex h-[820px] w-full flex-col justify-between bg-ink-2 px-5 pb-8 pt-20 md:px-10 md:h-[560px]">
-        <div className="mx-auto grid w-full max-w-[1760px] grid-cols-2 gap-8 md:grid-cols-4 md:gap-10">
-          <div className="col-span-2 md:col-span-1">
+    <div className="relative md:h-[880px] md:[clip-path:polygon(0_0,100%_0,100%_100%,0_100%)] xl:h-[600px]">
+      <footer className="relative flex w-full flex-col justify-between gap-10 bg-ink-2 px-5 pb-8 pt-14 md:fixed md:bottom-0 md:h-[880px] md:gap-0 md:px-10 md:pt-20 xl:h-[600px]">
+        <div className="mx-auto grid w-full max-w-[1760px] grid-cols-2 gap-8 md:grid-cols-3 md:gap-10 xl:grid-cols-6">
+          <div className="col-span-2 md:col-span-3 xl:col-span-1">
             <p className="font-display text-xl font-semibold">{siteConfig.name}</p>
             <p className="mt-3 text-sm text-mist">{siteConfig.tagline}</p>
           </div>
-          <div>
-            <p className="text-xs uppercase tracking-widest text-mist">Company</p>
-            <ul className="mt-4 space-y-2 text-sm">
-              {navLinks.map((l) => (
-                <li key={l.href}><Link className="hover:text-teal" href={l.href}>{l.label}</Link></li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <p className="text-xs uppercase tracking-widest text-mist">Products</p>
-            <ul className="mt-4 space-y-2 text-sm">
-              {products.map((p) => (
-                <li key={p.slug}><Link className="hover:text-teal" href={`/products/${p.slug}`}>{p.name}</Link></li>
-              ))}
-            </ul>
-          </div>
+          {columns.map((col) => (
+            <div key={col.title} className="min-w-0">
+              <p className="text-xs uppercase tracking-widest text-mist">{col.title}</p>
+              <ul className="mt-4 space-y-2 break-words text-sm">
+                {col.links.map((l) => (
+                  <li key={l.href}>
+                    <Link className="hover:text-teal" href={l.href}>{l.label}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
           <address className="col-span-2 not-italic md:col-span-1">
             <p className="text-xs uppercase tracking-widest text-mist">Get in touch</p>
             <ul className="mt-4 space-y-2 text-sm">

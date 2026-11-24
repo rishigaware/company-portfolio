@@ -27,7 +27,7 @@
   --t-line: rgb(11 19 36 / 0.1);
   --t-muted: #55657c;
   --t-fg: #0b1324;
-  --t-primary: #0d9488;
+  --t-primary: #0f766e;
   --t-accent: #2563eb;
   --t-accent-2: #7c3aed;
   --t-shadow: rgb(11 19 36 / 0.12);
@@ -76,9 +76,140 @@
   color-scheme: dark;
 }
 
+/* ---------- Additional light themes ---------- */
+
+[data-theme="azure"] {
+  --t-bg: #f7fafd;
+  --t-surface: #eef4fa;
+  --t-surface-2: #dfe9f4;
+  --t-line: rgb(12 35 64 / 0.1);
+  --t-muted: #52657d;
+  --t-fg: #0c2340;
+  --t-primary: #0369a1;
+  --t-accent: #0891b2;
+  --t-accent-2: #4f46e5;
+  --t-shadow: rgb(12 35 64 / 0.12);
+  color-scheme: light;
+}
+
+[data-theme="sage"] {
+  --t-bg: #f7faf7;
+  --t-surface: #edf4ee;
+  --t-surface-2: #dde9e0;
+  --t-line: rgb(16 42 28 / 0.1);
+  --t-muted: #55695c;
+  --t-fg: #12261a;
+  --t-primary: #15803d;
+  --t-accent: #0f766e;
+  --t-accent-2: #a16207;
+  --t-shadow: rgb(16 42 28 / 0.12);
+  color-scheme: light;
+}
+
+[data-theme="lavender"] {
+  --t-bg: #fbfaff;
+  --t-surface: #f3f0fd;
+  --t-surface-2: #e7e1fa;
+  --t-line: rgb(36 22 74 / 0.1);
+  --t-muted: #625a7c;
+  --t-fg: #1e1638;
+  --t-primary: #6d28d9;
+  --t-accent: #db2777;
+  --t-accent-2: #2563eb;
+  --t-shadow: rgb(36 22 74 / 0.12);
+  color-scheme: light;
+}
+
+[data-theme="corporate"] {
+  --t-bg: #ffffff;
+  --t-surface: #f4f6fa;
+  --t-surface-2: #e5e9f2;
+  --t-line: rgb(15 23 42 / 0.1);
+  --t-muted: #56627a;
+  --t-fg: #0f172a;
+  --t-primary: #1e3a8a;
+  --t-accent: #0369a1;
+  --t-accent-2: #b45309;
+  --t-shadow: rgb(15 23 42 / 0.12);
+  color-scheme: light;
+}
+
+/* ---------- Additional dark themes ---------- */
+
+[data-theme="ocean"] {
+  --t-bg: #04111d;
+  --t-surface: #0a1e30;
+  --t-surface-2: #112b44;
+  --t-line: rgb(255 255 255 / 0.08);
+  --t-muted: #8fa7bf;
+  --t-fg: #e6f1fb;
+  --t-primary: #38bdf8;
+  --t-accent: #22d3ee;
+  --t-accent-2: #818cf8;
+  --t-shadow: rgb(0 0 0 / 0.6);
+  color-scheme: dark;
+}
+
+[data-theme="forest"] {
+  --t-bg: #07130d;
+  --t-surface: #0e2117;
+  --t-surface-2: #163122;
+  --t-line: rgb(255 255 255 / 0.08);
+  --t-muted: #93ab9c;
+  --t-fg: #e8f5ec;
+  --t-primary: #4ade80;
+  --t-accent: #2dd4bf;
+  --t-accent-2: #facc15;
+  --t-shadow: rgb(0 0 0 / 0.6);
+  color-scheme: dark;
+}
+
+[data-theme="plum"] {
+  --t-bg: #0f0a1a;
+  --t-surface: #1a1229;
+  --t-surface-2: #261a3b;
+  --t-line: rgb(255 255 255 / 0.08);
+  --t-muted: #a99cc2;
+  --t-fg: #f3eefc;
+  --t-primary: #c084fc;
+  --t-accent: #f472b6;
+  --t-accent-2: #60a5fa;
+  --t-shadow: rgb(0 0 0 / 0.6);
+  color-scheme: dark;
+}
+
+[data-theme="navygold"] {
+  --t-bg: #0a1020;
+  --t-surface: #121b33;
+  --t-surface-2: #1b2747;
+  --t-line: rgb(255 255 255 / 0.08);
+  --t-muted: #9aa6c0;
+  --t-fg: #eef2fa;
+  --t-primary: #fbbf24;
+  --t-accent: #60a5fa;
+  --t-accent-2: #f97316;
+  --t-shadow: rgb(0 0 0 / 0.6);
+  color-scheme: dark;
+}
+
 @theme {
   --font-display: var(--font-heading), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /*
+   * FLUID TYPE SCALE — every text-* size scales smoothly between a phone (≈360px)
+   * and a desktop (≈1440px) screen, so headings never look oversized on mobile.
+   */
+  --text-base: clamp(0.9375rem, 0.9rem + 0.15vw, 1rem);
+  --text-lg: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --text-xl: clamp(1.0625rem, 0.98rem + 0.4vw, 1.25rem);
+  --text-2xl: clamp(1.2rem, 1.05rem + 0.65vw, 1.5rem);
+  --text-3xl: clamp(1.4rem, 1.15rem + 1.05vw, 1.875rem);
+  --text-4xl: clamp(1.6rem, 1.25rem + 1.5vw, 2.25rem);
+  --text-5xl: clamp(1.9rem, 1.35rem + 2.4vw, 3rem);
+  --text-6xl: clamp(2.2rem, 1.45rem + 3.3vw, 3.75rem);
+  --text-7xl: clamp(2.5rem, 1.5rem + 4.4vw, 4.5rem);
+
   --animate-marquee: marquee 30s linear infinite;
   --animate-gradient: gradient 14s ease infinite;
 
@@ -112,6 +243,28 @@ body {
 ::view-transition-new(root) {
   animation: none;
   mix-blend-mode: normal;
+}
+
+/* Fluid heading utilities (page H1, section H2, large lead text) */
+@utility text-h1 {
+  font-size: clamp(1.95rem, 1.2rem + 3.2vw, 3.5rem);
+  line-height: 1.1;
+}
+@utility text-h2 {
+  font-size: clamp(1.55rem, 1.15rem + 1.8vw, 2.6rem);
+  line-height: 1.15;
+}
+@utility text-lead {
+  font-size: clamp(1.3rem, 1rem + 1.4vw, 2.2rem);
+  line-height: 1.35;
+}
+
+/* Horizontally scrollable rows (filter pills on phones) without a visible scrollbar */
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 /* Lenis */

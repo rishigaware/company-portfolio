@@ -8,9 +8,9 @@ const fmt = (d: string) => new Date(d).toLocaleDateString("en-GB", { day: "2-dig
 /** News & events cards: staggered rise, hover lift with gradient sweep. */
 export function NewsEvents() {
   return (
-    <section className="mx-auto max-w-[1760px] px-5 md:px-10 py-20 md:py-24">
+    <section className="mx-auto max-w-[1760px] px-5 md:px-10 py-14 md:py-20 lg:py-24">
       <p className="mb-4 text-xs uppercase tracking-[0.3em] text-teal">News &amp; events</p>
-      <h2 className="mb-12 font-display text-3xl font-semibold tracking-tight md:text-[2.6rem] md:leading-tight">Latest from the lab</h2>
+      <h2 className="mb-12 font-display text-h2 font-semibold tracking-tight">Latest from the lab</h2>
       <div className="grid gap-6 md:grid-cols-3">
         {news.map((n, i) => (
           <motion.article

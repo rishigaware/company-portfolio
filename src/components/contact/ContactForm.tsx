@@ -5,15 +5,16 @@ import { useSearchParams } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { submitContact, type ContactState } from "@/app/contact/actions";
 import { products } from "@/data/products";
+import { downloads, services, solutions } from "@/data/offerings";
 
 const initial: ContactState = { ok: false, message: "" };
 
-function Field({ name, label, type = "text", error, textarea }: { name: string; label: string; type?: string; error?: string; textarea?: boolean }) {
+function Field({ name, label, type = "text", error, textarea, defaultValue }: { name: string; label: string; type?: string; error?: string; textarea?: boolean; defaultValue?: string }) {
   const cls = `peer w-full rounded-2xl border bg-snow/[0.03] px-5 pb-3 pt-7 outline-none transition-colors placeholder-transparent focus:border-teal ${error ? "border-red-400" : "border-line"}`;
   return (
     <motion.div className="relative" variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0 } }}>
       {textarea ? (
-        <textarea id={name} name={name} rows={5} placeholder={label} className={cls} aria-invalid={!!error} />
+        <textarea id={name} name={name} rows={5} placeholder={label} className={cls} aria-invalid={!!error} defaultValue={defaultValue} />
       ) : (
         <input id={name} name={name} type={type} placeholder={label} className={cls} aria-invalid={!!error} />
       )}
@@ -30,6 +31,19 @@ export function ContactForm() {
   const params = useSearchParams();
   const product = params.get("product") ?? "";
   const type = params.get("type") === "demo" ? "demo" : "quote";
+  // Prefill the message when arriving from a part, document, service or solution link.
+  const part = params.get("part");
+  const download = downloads.find((d) => d.slug === params.get("download"));
+  const service = services.find((x) => x.slug === params.get("service"));
+  const solution = solutions.find((x) => x.slug === params.get("solution"));
+  const prefill = [
+    part && `I'd like a quote for part no. ${part}.`,
+    download && `Please send me: ${download.title}.`,
+    service && `I'm interested in your ${service.name} service.`,
+    solution && `Please send a proposal for the ${solution.name} solution.`,
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   return (
     <AnimatePresence mode="wait">
@@ -77,7 +91,7 @@ export function ContactForm() {
               ))}
             </select>
           </motion.div>
-          <Field name="message" label="How can we help?" textarea error={state.errors?.message} />
+          <Field name="message" label="How can we help?" textarea error={state.errors?.message} defaultValue={prefill || undefined} />
           {state.message && !state.ok && <p className="text-sm text-red-400" role="alert">{state.message}</p>}
           <motion.button
             variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0 } }}

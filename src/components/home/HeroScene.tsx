@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Float } from "@react-three/drei";
 import * as THREE from "three";
 import { useTheme } from "@/components/theme/ThemeProvider";
@@ -311,6 +311,17 @@ function Wobble({ children }: { children: React.ReactNode }) {
   return <group ref={ref}>{children}</group>;
 }
 
+/** Pull the camera back on narrow (portrait-ish) canvases so the whole scene fits on phones. */
+function CameraFit() {
+  const { camera, size } = useThree();
+  useEffect(() => {
+    const aspect = size.width / size.height;
+    camera.position.z = aspect < 0.9 ? 13 : aspect < 1.3 ? 11 : 9.5;
+    camera.updateProjectionMatrix();
+  }, [camera, size]);
+  return null;
+}
+
 /** Whole scene leans toward the pointer for a subtle parallax. */
 function Rig({ children }: { children: React.ReactNode }) {
   const ref = useRef<THREE.Group>(null);
@@ -332,6 +343,7 @@ export default function HeroScene() {
 
   return (
     <Canvas camera={{ position: [0, 0, 9.5], fov: 45 }} dpr={[1, 1.75]} gl={{ antialias: true, alpha: true }}>
+      <CameraFit />
       <ambientLight intensity={pal.dark ? 0.55 : 1.1} />
       <directionalLight position={[4, 5, 6]} intensity={pal.dark ? 2.2 : 2.6} />
       <pointLight position={[-5, -2, 3]} intensity={25} color={pal.accent2} />

@@ -50,14 +50,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
-      <body className="min-h-screen">
+      {/* suppressHydrationWarning: browser extensions / devtools (e.g. custom-cursor overlays) inject
+          attributes on <body> before React hydrates. This only ignores attribute diffs on <body> itself. */}
+      <body className="min-h-screen" suppressHydrationWarning>
         <JsonLd data={[organizationSchema(), websiteSchema()]} />
         <ThemeProvider>
           <SmoothScroll>
             <ScrollProgress />
             <CustomCursor />
             <Header />
-            <div className="relative z-10 bg-ink shadow-[0_40px_80px_var(--t-shadow)]">
+            {/* overflow-x-clip: slide-in animations must never widen the page on phones (which would zoom the whole site out) */}
+            <div className="relative z-10 overflow-x-clip bg-ink shadow-[0_40px_80px_var(--t-shadow)]">
               <main id="main">{children}</main>
             </div>
             <Footer />

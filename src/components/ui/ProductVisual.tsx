@@ -17,7 +17,19 @@ export function ProductVisual({ product, className = "" }: { product: Product; c
             <stop offset="1" style={{ stopColor: "var(--t-fg)" }} stopOpacity="0.2" />
           </linearGradient>
         </defs>
-        {product.category === "Instrument" ? (
+        {product.category === "Consumables" ? (
+          <g>
+            {/* Rack of sample vials */}
+            <rect x="80" y="200" width="240" height="26" rx="6" style={{ fill: "var(--t-surface)" }} stroke={`url(#g-${id})`} strokeWidth="2" />
+            {[0, 1, 2, 3, 4].map((i) => (
+              <g key={i} transform={`translate(${104 + i * 46} 0)`}>
+                <rect x="-14" y="92" width="28" height="12" rx="3" fill={c} fillOpacity={0.9} />
+                <rect x="-12" y="104" width="24" height="100" rx="8" style={{ fill: "var(--t-surface)" }} stroke={c} strokeOpacity="0.6" strokeWidth="2" />
+                <rect x="-10" y={150 - i * 8} width="20" height={52 + i * 8} rx="6" fill={c} fillOpacity={0.25 + i * 0.1} />
+              </g>
+            ))}
+          </g>
+        ) : product.category === "Instrument" ? (
           <g>
             <rect x="70" y="80" width="260" height="150" rx="18" style={{ fill: "var(--t-surface)" }} stroke={`url(#g-${id})`} strokeWidth="2" />
             <rect x="90" y="100" width="120" height="70" rx="8" fill={c} fillOpacity="0.15" stroke={c} strokeOpacity="0.6" />

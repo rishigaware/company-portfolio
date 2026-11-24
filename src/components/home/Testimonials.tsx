@@ -20,11 +20,11 @@ export function Testimonials() {
   }, []);
 
   return (
-    <section className="py-20 md:py-24">
+    <section className="py-14 md:py-20 lg:py-24">
       <div className="mx-auto mb-12 flex max-w-[1760px] items-end justify-between px-5 md:px-10">
         <div>
           <p className="mb-4 text-xs uppercase tracking-[0.3em] text-teal">Testimonials</p>
-          <h2 className="font-display text-3xl font-semibold tracking-tight md:text-[2.6rem] md:leading-tight">What our customers say</h2>
+          <h2 className="font-display text-h2 font-semibold tracking-tight">What our customers say</h2>
         </div>
         <p className="hidden text-sm text-mist md:block">← Drag →</p>
       </div>

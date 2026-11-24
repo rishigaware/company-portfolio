@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useRef } from "react";
+import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -48,15 +49,23 @@ export function ProductsHorizontal() {
       <div className="mx-auto mb-12 flex w-full max-w-[1760px] items-end justify-between px-5 md:px-10">
         <div>
           <p className="mb-4 text-xs uppercase tracking-[0.3em] text-teal">Our products</p>
-          <h2 className="font-display text-3xl font-semibold tracking-tight md:text-[2.6rem] md:leading-tight">Built for the modern lab</h2>
+          <h2 className="font-display text-h2 font-semibold tracking-tight">Built for the modern lab</h2>
         </div>
         <Link href="/products" className="hidden text-sm text-mist underline-offset-4 hover:text-teal hover:underline md:block">
           View all →
         </Link>
       </div>
-      <div ref={track} className="flex flex-col gap-6 px-6 md:w-max md:flex-row md:pl-[max(2.5rem,calc((100vw-1760px)/2+2.5rem))]">
+      <div ref={track} className="flex flex-col gap-5 px-5 sm:grid sm:grid-cols-2 md:flex md:w-max md:flex-row md:gap-6 md:pl-[max(2.5rem,calc((100vw-1760px)/2+2.5rem))]">
         {products.map((p, i) => (
-          <TiltCard key={p.slug} glow={p.accent} className="hp-card rounded-2xl md:w-[420px]">
+          <motion.div
+            key={p.slug}
+            className="hp-card md:w-[420px]"
+            initial={{ opacity: 0, y: 50, scale: 0.96 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.7, delay: (i % 3) * 0.08, ease: [0.22, 1, 0.36, 1] }}
+          >
+          <TiltCard glow={p.accent} className="rounded-2xl">
             <Link href={`/products/${p.slug}`} className="block rounded-2xl border border-line bg-ink-2 p-4">
               <div className="overflow-hidden rounded-2xl">
                 <ProductVisual product={p} className="hp-visual aspect-[4/3]" />
@@ -69,6 +78,7 @@ export function ProductsHorizontal() {
               </div>
             </Link>
           </TiltCard>
+          </motion.div>
         ))}
       </div>
     </section>

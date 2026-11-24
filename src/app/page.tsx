@@ -14,6 +14,8 @@ import { GalleryParallax } from "@/components/sections/GalleryParallax";
 import { GlobalPresence } from "@/components/sections/GlobalPresence";
 import { NewsEvents } from "@/components/sections/NewsEvents";
 import { Faq } from "@/components/sections/Faq";
+import { ClientsShowcase } from "@/components/sections/ClientsShowcase";
+import { ServicesTeaser, SolutionsTeaser } from "@/components/home/OfferingsTeasers";
 
 export default function HomePage() {
   return (
@@ -22,8 +24,11 @@ export default function HomePage() {
       <Marquee />
       <AboutIntro />
       <ProductsHorizontal />
+      <SolutionsTeaser />
       <WhyStack />
+      <ServicesTeaser />
       <CaseStudiesHover />
+      <ClientsShowcase />
       <IndustriesBento />
       <IntegrationsOrbit />
       <ProcessLine />

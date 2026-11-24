@@ -86,39 +86,51 @@ export function ThemeControls() {
         {open && (
           <motion.div
             role="menu"
-            initial={{ opacity: 0, y: -8, scale: 0.95 }}
+            initial={{ opacity: 0, y: -8, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -8, scale: 0.95 }}
+            exit={{ opacity: 0, y: -8, scale: 0.96 }}
             transition={{ duration: 0.2 }}
-            className="absolute right-0 top-12 z-50 w-64 origin-top-right rounded-2xl border border-line bg-ink p-2 shadow-[0_20px_60px_var(--t-shadow)]"
+            className="fixed left-3 right-3 top-20 z-50 max-h-[75vh] origin-top-right overflow-y-auto rounded-2xl border border-line bg-ink p-3 shadow-[0_20px_60px_var(--t-shadow)] sm:absolute sm:left-auto sm:right-0 sm:top-12 sm:w-[460px]"
           >
-            {(["light", "dark"] as const).map((mode) => (
-              <div key={mode} className="py-1">
-                <p className="px-3 pb-1 pt-2 text-[11px] uppercase tracking-widest text-mist">{mode} themes</p>
-                {themes
-                  .filter((t) => t.mode === mode)
-                  .map((t) => (
-                    <button
-                      key={t.id}
-                      role="menuitemradio"
-                      aria-checked={theme.id === t.id}
-                      onClick={(e) => {
-                        setTheme(t.id, originOf(e));
-                        setOpen(false);
-                      }}
-                      className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm transition-colors hover:bg-ink-2 ${theme.id === t.id ? "bg-ink-2" : ""}`}
-                    >
-                      <span className="flex overflow-hidden rounded-full border border-line">
-                        {t.swatch.map((c) => (
-                          <span key={c} className="h-5 w-3" style={{ background: c }} />
-                        ))}
-                      </span>
-                      <span className="flex-1">{t.label}</span>
-                      {theme.id === t.id && <span className="text-teal">✓</span>}
-                    </button>
-                  ))}
-              </div>
-            ))}
+            <div className="grid grid-cols-1 gap-x-2 gap-y-3 min-[420px]:grid-cols-2 min-[420px]:gap-y-0">
+              {(["light", "dark"] as const).map((mode) => (
+                <div key={mode}>
+                  <p className="flex items-center gap-1.5 px-2 pb-2 pt-1 text-[11px] uppercase tracking-widest text-mist">
+                    {mode === "light" ? "☀" : "☾"} {mode} themes
+                  </p>
+                  <div className="space-y-1">
+                    {themes
+                      .filter((t) => t.mode === mode)
+                      .map((t, i) => (
+                        <motion.button
+                          key={t.id}
+                          role="menuitemradio"
+                          aria-checked={theme.id === t.id}
+                          initial={{ opacity: 0, x: mode === "light" ? -8 : 8 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: i * 0.03 }}
+                          onClick={(e) => {
+                            setTheme(t.id, originOf(e));
+                            setOpen(false);
+                          }}
+                          className={`flex w-full items-center gap-2.5 rounded-xl px-2 py-2 text-left text-[13px] transition-colors hover:bg-ink-2 ${
+                            theme.id === t.id ? "bg-ink-2 ring-1 ring-teal/50" : ""
+                          }`}
+                        >
+                          {/* Mini preview: background tile with primary + accent dots */}
+                          <span className="relative flex h-7 w-10 shrink-0 items-center justify-center gap-1 rounded-md border border-line" style={{ background: t.swatch[0] }}>
+                            <span className="h-2.5 w-2.5 rounded-full" style={{ background: t.swatch[1] }} />
+                            <span className="h-2.5 w-2.5 rounded-full" style={{ background: t.swatch[2] }} />
+                          </span>
+                          <span className="flex-1 truncate">{t.label}</span>
+                          {theme.id === t.id && <span className="text-teal">✓</span>}
+                        </motion.button>
+                      ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p className="mt-3 border-t border-line px-2 pt-3 text-[11px] text-mist">Tip: the ☀/☾ button switches to the matching theme on the same row.</p>
           </motion.div>
         )}
       </AnimatePresence>

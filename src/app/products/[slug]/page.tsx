@@ -47,7 +47,7 @@ export default async function ProductPage({ params }: Props) {
         ]}
       />
 
-      <header className="relative mx-auto grid max-w-[1760px] items-center gap-12 px-5 md:px-10 pb-16 pt-32 md:pt-36 md:grid-cols-2">
+      <header className="relative mx-auto grid max-w-[1760px] overflow-x-clip items-center gap-12 px-5 md:px-10 pb-16 pt-32 md:pt-36 md:grid-cols-2">
         <div aria-hidden className="absolute left-0 top-20 h-96 w-96 rounded-full blur-[140px]" style={{ background: `${p.accent}33` }} />
         <div className="relative">
           <nav aria-label="Breadcrumb" className="mb-6 text-sm text-mist">
@@ -55,7 +55,7 @@ export default async function ProductPage({ params }: Props) {
             <span className="text-snow">{p.name}</span>
           </nav>
           <p className="mb-3 text-xs uppercase tracking-[0.3em]" style={{ color: accentText(p.accent) }}>{p.category}</p>
-          <SplitReveal as="h1" text={p.name} className="font-display text-4xl font-semibold tracking-tight md:text-[3.4rem]" />
+          <SplitReveal as="h1" text={p.name} className="font-display text-h1 font-semibold tracking-tight" />
           <Reveal delay={0.3}>
             <p className="mt-4 text-xl">{p.tagline}</p>
             <p className="mt-4 text-mist">{p.description}</p>
@@ -80,7 +80,7 @@ export default async function ProductPage({ params }: Props) {
 
       <FeatureWalkthrough product={p} />
 
-      <section className="mx-auto max-w-[1760px] px-5 md:px-10 py-24">
+      <section className="mx-auto max-w-[1760px] px-5 md:px-10 py-16 md:py-24">
         <h2 className="mb-10 font-display text-4xl font-semibold">Technical specifications</h2>
         <dl className="divide-y divide-line border-y border-line">
           {p.specs.map((s, i) => (
@@ -98,7 +98,7 @@ export default async function ProductPage({ params }: Props) {
       </section>
 
       {related.length > 0 && (
-        <section className="mx-auto max-w-[1760px] px-5 md:px-10 pb-32">
+        <section className="mx-auto max-w-[1760px] px-5 md:px-10 pb-20 md:pb-32">
           <h2 className="mb-10 font-display text-3xl font-semibold">Works well with</h2>
           <ul className="grid gap-6 md:grid-cols-3">
             {related.map((r, i) => (

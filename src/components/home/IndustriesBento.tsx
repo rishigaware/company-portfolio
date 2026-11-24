@@ -8,9 +8,9 @@ const hues = ["#2dd4bf", "#60a5fa", "#a78bfa", "#f472b6", "#fbbf24", "#34d399"];
 /** Bento grid: tiles wipe in with a clip-path mask, staggered. */
 export function IndustriesBento() {
   return (
-    <section className="mx-auto max-w-[1760px] px-5 md:px-10 py-20 md:py-24">
+    <section className="mx-auto max-w-[1760px] px-5 md:px-10 py-14 md:py-20 lg:py-24">
       <p className="mb-4 text-xs uppercase tracking-[0.3em] text-teal">Industries</p>
-      <h2 className="mb-12 max-w-2xl font-display text-3xl font-semibold tracking-tight md:text-[2.6rem] md:leading-tight">Trusted wherever precision matters</h2>
+      <h2 className="mb-12 max-w-2xl font-display text-h2 font-semibold tracking-tight">Trusted wherever precision matters</h2>
       {/* The (unclipped) grid triggers the reveal: a fully clipped tile has no visible area, so it would never count as "in view". */}
       <motion.div
         className="grid auto-rows-[220px] grid-cols-1 gap-4 md:grid-cols-3"

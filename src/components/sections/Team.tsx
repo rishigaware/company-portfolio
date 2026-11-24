@@ -6,9 +6,9 @@ import { team } from "@/data/content";
 /** Leadership cards that flip in 3D on hover / focus to show a short bio. */
 export function Team() {
   return (
-    <section className="mx-auto max-w-[1760px] px-5 md:px-10 py-24">
+    <section className="mx-auto max-w-[1760px] px-5 md:px-10 py-16 md:py-24">
       <p className="mb-4 text-xs uppercase tracking-[0.3em] text-teal">Leadership</p>
-      <h2 className="mb-12 font-display text-3xl font-semibold tracking-tight md:text-4xl">The people behind the precision</h2>
+      <h2 className="mb-12 font-display text-4xl font-semibold tracking-tight">The people behind the precision</h2>
       <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {team.map((m, i) => {
           const initials = m.name.replace("Dr. ", "").split(" ").map((w) => w[0]).join("");

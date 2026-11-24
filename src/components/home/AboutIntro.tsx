@@ -6,14 +6,14 @@ import { siteConfig } from "@/config/site";
 
 export function AboutIntro() {
   return (
-    <section id="about" className="mx-auto max-w-[1760px] px-5 md:px-10 py-20 md:py-24">
+    <section id="about" className="mx-auto max-w-[1760px] px-5 md:px-10 py-14 md:py-20 lg:py-24">
       <p className="mb-8 text-xs uppercase tracking-[0.3em] text-teal">Who we are</p>
       <h2 className="sr-only">About {siteConfig.name}</h2>
       <ScrollFillText
-        className="font-display text-2xl font-medium leading-snug md:text-[2.2rem]"
+        className="font-display text-lead font-medium"
         text={`Since ${siteConfig.foundedYear}, ${siteConfig.name} has engineered instruments and software that labs trust when results matter most — from first sample to final audit.`}
       />
-      <dl className="mt-24 grid grid-cols-2 gap-8 md:grid-cols-4">
+      <dl className="mt-14 grid md:mt-24 grid-cols-2 gap-8 md:grid-cols-4">
         {stats.map((s, i) => (
           <Reveal key={s.label} delay={i * 0.1} className="border-t border-line pt-6">
             <dt className="text-sm text-mist">{s.label}</dt>

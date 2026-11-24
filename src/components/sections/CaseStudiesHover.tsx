@@ -21,11 +21,11 @@ export function CaseStudiesHover() {
   }, [active]);
 
   return (
-    <section className="mx-auto max-w-[1760px] px-5 md:px-10 py-20 md:py-24">
+    <section className="mx-auto max-w-[1760px] px-5 md:px-10 py-14 md:py-20 lg:py-24">
       <div className="mb-12 flex items-end justify-between gap-6">
         <div>
           <p className="mb-4 text-xs uppercase tracking-[0.3em] text-teal">Portfolio</p>
-          <h2 className="font-display text-3xl font-semibold tracking-tight md:text-[2.6rem] md:leading-tight">Success stories</h2>
+          <h2 className="font-display text-h2 font-semibold tracking-tight">Success stories</h2>
         </div>
         <Link href="/case-studies" className="hidden text-sm text-mist underline-offset-4 hover:text-teal hover:underline md:block">
           All case studies →

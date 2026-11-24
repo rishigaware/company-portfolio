@@ -21,13 +21,13 @@ export default function CaseStudiesPage() {
       <JsonLd data={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Case Studies", path: "/case-studies" }])} />
       <section className="mx-auto max-w-[1760px] px-5 md:px-10 pb-12 pt-32 md:pt-36">
         <p className="mb-4 text-xs uppercase tracking-[0.3em] text-teal">Portfolio</p>
-        <SplitReveal as="h1" text="Results our customers can measure." highlight={["measure."]} className="max-w-4xl font-display text-4xl font-semibold leading-tight tracking-tight md:text-[3.4rem]" />
+        <SplitReveal as="h1" text="Results our customers can measure." highlight={["measure."]} className="max-w-4xl font-display text-h1 font-semibold tracking-tight" />
         <p className="mt-5 max-w-2xl text-base text-mist">Real outcomes from labs that moved to our instruments and software. (Dummy content.)</p>
       </section>
 
       <div className="mx-auto max-w-[1760px] space-y-10 px-5 md:px-10 pb-24">
         {caseStudies.map((c, i) => (
-          <article key={c.slug} id={c.slug} className="sticky top-24 scroll-mt-28">
+          <article key={c.slug} id={c.slug} className="scroll-mt-28 md:sticky md:top-24">
             <Reveal y={80}>
               <div className="grid overflow-hidden rounded-2xl border border-line bg-ink-2 shadow-[0_-20px_60px_var(--t-shadow)] md:grid-cols-[1fr_1.2fr]">
                 <div className="relative min-h-[240px] p-8 text-white" style={{ background: `linear-gradient(150deg, ${c.color}, ${c.color}99)` }}>
@@ -45,7 +45,7 @@ export default function CaseStudiesPage() {
                   </div>
                 </div>
                 <div className="p-8 md:p-10">
-                  <h2 className="font-display text-2xl font-semibold md:text-3xl">{c.title}</h2>
+                  <h2 className="font-display text-3xl font-semibold">{c.title}</h2>
                   <div className="mt-6 grid gap-6 sm:grid-cols-2">
                     <div>
                       <h3 className="text-xs uppercase tracking-widest text-mist">Challenge</h3>

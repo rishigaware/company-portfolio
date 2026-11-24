@@ -20,10 +20,10 @@ export function WhyStack() {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
 
   return (
-    <section className="mx-auto grid max-w-[1760px] gap-10 px-5 py-20 md:px-10 md:py-24 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+    <section className="mx-auto grid max-w-[1760px] gap-10 px-5 py-14 md:px-10 md:py-20 lg:py-24 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
       <div className="lg:sticky lg:top-32 lg:self-start">
         <p className="mb-4 text-xs uppercase tracking-[0.3em] text-teal">Why choose us</p>
-        <h2 className="font-display text-3xl font-semibold tracking-tight md:text-[2.6rem] md:leading-tight">Four reasons labs switch to us</h2>
+        <h2 className="font-display text-h2 font-semibold tracking-tight">Four reasons labs switch to us</h2>
         <p className="mt-5 max-w-md text-base text-mist">
           From the first installation to every audit that follows, we stay accountable for the results your lab reports.
         </p>
@@ -69,8 +69,8 @@ function Card({ i, total, progress, n, title, text, color }: { i: number; total:
           <span aria-hidden className="h-2 w-2 rounded-full" style={{ background: color }} />
         </div>
         <div className="max-w-xl">
-          <h3 className="font-display text-xl font-semibold md:text-2xl">{title}</h3>
-          <p className="mt-2 text-sm text-mist md:text-base">{text}</p>
+          <h3 className="font-display text-2xl font-semibold">{title}</h3>
+          <p className="mt-2 text-base text-mist">{text}</p>
         </div>
       </motion.article>
     </div>

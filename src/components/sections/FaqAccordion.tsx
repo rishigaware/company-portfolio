@@ -8,10 +8,10 @@ import { faqs } from "@/data/content";
 export function FaqAccordion() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section className="mx-auto grid max-w-[1760px] gap-12 px-5 md:px-10 py-20 md:py-24 md:grid-cols-[1fr_1.6fr]">
+    <section className="mx-auto grid max-w-[1760px] gap-12 px-5 md:px-10 py-14 md:py-20 lg:py-24 md:grid-cols-[1fr_1.6fr]">
       <div className="md:sticky md:top-32 md:self-start">
         <p className="mb-4 text-xs uppercase tracking-[0.3em] text-teal">FAQ</p>
-        <h2 className="font-display text-3xl font-semibold tracking-tight md:text-4xl">Questions labs ask us</h2>
+        <h2 className="font-display text-4xl font-semibold tracking-tight">Questions labs ask us</h2>
         <p className="mt-4 text-mist">Can&apos;t find your answer? Our specialists reply within one business day.</p>
       </div>
       <ul className="divide-y divide-line border-y border-line">

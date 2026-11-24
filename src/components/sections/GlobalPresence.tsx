@@ -58,11 +58,11 @@ const map = buildMap();
 
 export function GlobalPresence() {
   return (
-    <section className="mx-auto max-w-[1760px] px-5 py-20 md:px-10 md:py-24">
+    <section className="mx-auto max-w-[1760px] px-5 py-14 md:px-10 md:py-20 lg:py-24">
       <div className="mb-10 grid gap-8 md:grid-cols-2 md:items-end">
         <div>
           <p className="mb-4 text-xs uppercase tracking-[0.3em] text-teal">Global presence</p>
-          <h2 className="font-display text-3xl font-semibold tracking-tight md:text-[2.6rem] md:leading-tight">Local support in 22 countries</h2>
+          <h2 className="font-display text-h2 font-semibold tracking-tight">Local support in 22 countries</h2>
         </div>
         <dl className="grid grid-cols-3 gap-4">
           {[

@@ -11,9 +11,9 @@ export function ProcessLine() {
   const pathLength = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
 
   return (
-    <section className="mx-auto max-w-5xl px-5 md:px-10 py-20 md:py-24">
+    <section className="mx-auto max-w-5xl overflow-x-clip px-5 md:px-10 py-14 md:py-20 lg:py-24">
       <p className="mb-4 text-xs uppercase tracking-[0.3em] text-teal">How we work</p>
-      <h2 className="mb-12 font-display text-3xl font-semibold tracking-tight md:text-[2.6rem] md:leading-tight">From consultation to lifetime support</h2>
+      <h2 className="mb-12 font-display text-h2 font-semibold tracking-tight">From consultation to lifetime support</h2>
       <div ref={ref} className="relative">
         <svg aria-hidden className="absolute left-5 top-0 h-full w-1 md:left-1/2 md:-translate-x-1/2" preserveAspectRatio="none" viewBox="0 0 2 100">
           <line x1="1" y1="0" x2="1" y2="100" style={{ stroke: "var(--t-line)" }} strokeWidth="2" vectorEffect="non-scaling-stroke" />

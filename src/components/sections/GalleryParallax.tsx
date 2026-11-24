@@ -17,11 +17,29 @@ export function GalleryParallax() {
   const ys = [y1, y2, y3];
 
   return (
-    <section ref={ref} className="overflow-hidden py-20 md:py-24">
+    <section ref={ref} className="overflow-hidden py-14 md:py-20 lg:py-24">
       <div className="mx-auto max-w-[1760px] px-5 md:px-10">
         <p className="mb-4 text-xs uppercase tracking-[0.3em] text-teal">Installations</p>
-        <h2 className="mb-12 max-w-2xl font-display text-3xl font-semibold tracking-tight md:text-[2.6rem] md:leading-tight">Labs we&apos;ve built and equipped</h2>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+        <h2 className="mb-12 max-w-2xl font-display text-h2 font-semibold tracking-tight">Labs we&apos;ve built and equipped</h2>
+        {/* Phones: compact 2-column grid without parallax */}
+        <ul className="grid grid-cols-2 gap-3 sm:hidden">
+          {gallery.map((g, i) => (
+            <li key={g.title} className={`relative overflow-hidden rounded-xl border border-line bg-ink-2 ${i % 3 === 0 ? "col-span-2 h-44" : "h-36"}`}>
+              <div
+                aria-hidden
+                className="absolute inset-0"
+                style={{ background: `radial-gradient(circle at 30% 30%, color-mix(in srgb, ${tints[i % 3]} 45%, transparent), transparent 65%), linear-gradient(160deg, var(--t-surface-2), var(--t-surface))` }}
+              />
+              <div aria-hidden className="grid-bg absolute inset-0" />
+              <div className="absolute inset-x-0 bottom-0 p-3">
+                <p className="font-display text-sm font-semibold leading-tight">{g.title}</p>
+                <p className="text-[11px] text-mist">{g.place}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+        {/* sm and up: three columns drifting at different speeds */}
+        <div aria-hidden="false" className="hidden gap-4 sm:grid sm:grid-cols-3">
           {cols.map((col, ci) => (
             <Column key={ci} items={col} y={ys[ci]} tint={tints[ci]} />
           ))}

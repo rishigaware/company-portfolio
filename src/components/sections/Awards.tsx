@@ -6,14 +6,14 @@ import { awards } from "@/data/content";
 /** Award rows slide in from alternating sides; underline grows on hover. */
 export function Awards() {
   return (
-    <section className="mx-auto max-w-[1760px] px-5 md:px-10 py-24">
+    <section className="mx-auto max-w-[1760px] px-5 md:px-10 py-16 md:py-24">
       <p className="mb-4 text-xs uppercase tracking-[0.3em] text-teal">Recognition</p>
-      <h2 className="mb-12 font-display text-3xl font-semibold tracking-tight md:text-4xl">Awards &amp; recognition</h2>
+      <h2 className="mb-12 font-display text-4xl font-semibold tracking-tight">Awards &amp; recognition</h2>
       <ul>
         {awards.map((a, i) => (
           <motion.li
             key={a.title}
-            initial={{ opacity: 0, x: i % 2 ? 60 : -60 }}
+            initial={{ opacity: 0, x: i % 2 ? 40 : -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}

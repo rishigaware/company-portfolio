@@ -9,10 +9,10 @@ export function IntegrationsOrbit() {
   const inner = integrations.slice(0, 4);
   const outer = integrations.slice(4);
   return (
-    <section className="mx-auto grid max-w-[1760px] items-center gap-16 px-5 md:px-10 py-20 md:py-24 md:grid-cols-2">
+    <section className="mx-auto grid max-w-[1760px] items-center gap-12 overflow-x-clip px-5 md:gap-16 md:px-10 py-14 md:py-20 lg:py-24 md:grid-cols-2">
       <Reveal>
         <p className="mb-4 text-xs uppercase tracking-[0.3em] text-teal">Integrations</p>
-        <h2 className="font-display text-3xl font-semibold tracking-tight md:text-4xl">Fits into the systems you already run</h2>
+        <h2 className="font-display text-4xl font-semibold tracking-tight">Fits into the systems you already run</h2>
         <p className="mt-5 text-base text-mist">
           Native connectors for ERP, chromatography data systems, cloud platforms and identity providers — plus an open REST API.
         </p>
@@ -23,7 +23,7 @@ export function IntegrationsOrbit() {
         </ul>
       </Reveal>
 
-      <div aria-hidden className="relative mx-auto aspect-square w-full max-w-[460px]">
+      <div aria-hidden className="relative mx-auto aspect-square w-[calc(100%-3.5rem)] max-w-[460px] sm:w-full">
         <div className="absolute inset-[14%] rounded-full border border-dashed border-line" />
         <div className="absolute inset-0 rounded-full border border-line" />
         <div className="absolute inset-[36%] flex items-center justify-center rounded-full bg-teal text-center font-display text-sm font-semibold text-ink shadow-[0_0_80px_color-mix(in_srgb,var(--t-primary)_50%,transparent)]">
@@ -47,7 +47,7 @@ function Ring({ items, inset, duration, reverse }: { items: string[]; inset: str
         return (
           <motion.span
             key={n}
-            className="absolute flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-2xl border border-line bg-ink text-xs font-semibold shadow-[0_10px_30px_var(--t-shadow)]"
+            className="absolute flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-xl border border-line bg-ink text-[9px] font-semibold shadow-[0_10px_30px_var(--t-shadow)] sm:h-14 sm:w-14 sm:rounded-2xl sm:text-xs"
             style={{ left: `${50 + 50 * Math.cos(a)}%`, top: `${50 + 50 * Math.sin(a)}%` }}
             animate={{ rotate: -dir }}
             transition={{ repeat: Infinity, ease: "linear", duration }}

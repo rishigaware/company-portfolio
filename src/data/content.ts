@@ -1,12 +1,27 @@
 // DUMMY DATA — swap with real company content.
 
-export const navLinks = [
-  { href: "/", label: "Home" },
+export type NavItem = { href: string; label: string; desc?: string; children?: NavItem[] };
+
+/** Main menu. "Home" is intentionally omitted — the logo links to the homepage. */
+export const navLinks: NavItem[] = [
   { href: "/products", label: "Products" },
-  { href: "/case-studies", label: "Case Studies" },
+  { href: "/solutions", label: "Solutions" },
+  { href: "/services", label: "Services" },
+  {
+    href: "/case-studies",
+    label: "Resources",
+    children: [
+      { href: "/case-studies", label: "Case Studies", desc: "Results from labs like yours" },
+      { href: "/accessories", label: "Accessories & Spares", desc: "Genuine parts and upgrade kits" },
+      { href: "/downloads", label: "Downloads", desc: "Brochures, datasheets, certificates" },
+    ],
+  },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
+
+/** Flat list (mobile menu, footer). */
+export const flatNavLinks: NavItem[] = navLinks.flatMap((l) => l.children ?? [l]);
 
 export const stats = [
   { value: 15, suffix: "+", label: "Years of innovation" },
@@ -158,4 +173,31 @@ export const faqs = [
   { q: "Is the software available on-premise?", a: "LabSphere and AudiTrail are available as validated cloud SaaS or on-premise. ValidPro is cloud-only." },
   { q: "Which countries do you serve?", a: "We sell and support customers in 22 countries through our own offices and certified partners." },
   { q: "How quickly can I get a quote or demo?", a: "Send an enquiry from the contact page and an application specialist will reply within one business day." },
+];
+
+/** DUMMY client list for the animated clients section. Replace with real clients + logo files. */
+export type ClientLogo = {
+  name: string;
+  sector: string;
+  mark: "hexagon" | "ring" | "leaf" | "cross" | "drop" | "triangle" | "helix" | "square";
+  color: string;
+};
+
+export const clientLogos: ClientLogo[] = [
+  { name: "NovaPharm", sector: "Generics", mark: "hexagon", color: "#0d9488" },
+  { name: "BioGenix", sector: "Biologics", mark: "helix", color: "#2563eb" },
+  { name: "MediCore", sector: "Medical devices", mark: "cross", color: "#dc2626" },
+  { name: "Zenith Labs", sector: "CRO", mark: "triangle", color: "#7c3aed" },
+  { name: "Apex Bio", sector: "Biotech", mark: "leaf", color: "#16a34a" },
+  { name: "Helix Health", sector: "Diagnostics", mark: "ring", color: "#0891b2" },
+  { name: "PureForm", sector: "Nutraceuticals", mark: "drop", color: "#0284c7" },
+  { name: "Orion Life", sector: "Vaccines", mark: "square", color: "#c2410c" },
+  { name: "Vitalis", sector: "API manufacturing", mark: "drop", color: "#db2777" },
+  { name: "Quantis Pharma", sector: "Oncology", mark: "hexagon", color: "#4f46e5" },
+  { name: "CellNova", sector: "Cell therapy", mark: "ring", color: "#059669" },
+  { name: "Medora", sector: "Formulations", mark: "leaf", color: "#ca8a04" },
+  { name: "Kinetix Labs", sector: "Testing lab", mark: "triangle", color: "#0f766e" },
+  { name: "Synthera", sector: "Peptides", mark: "helix", color: "#9333ea" },
+  { name: "AquaMed", sector: "Ophthalmics", mark: "drop", color: "#0369a1" },
+  { name: "Lumina Bio", sector: "Research institute", mark: "square", color: "#e11d48" },
 ];

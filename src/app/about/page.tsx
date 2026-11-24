@@ -39,13 +39,13 @@ export default function AboutPage() {
       <JsonLd data={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "About", path: "/about" }])} />
       <section className="mx-auto max-w-[1760px] px-5 md:px-10 pb-16 pt-32 md:pt-36">
         <p className="mb-4 text-xs uppercase tracking-[0.3em] text-teal">About {siteConfig.name}</p>
-        <SplitReveal as="h1" text="We make lab work measurable, traceable and effortless." highlight={["measurable,", "traceable"]} className="max-w-4xl font-display text-4xl font-semibold leading-tight tracking-tight md:text-[3.4rem]" />
+        <SplitReveal as="h1" text="We make lab work measurable, traceable and effortless." highlight={["measurable,", "traceable"]} className="max-w-4xl font-display text-h1 font-semibold tracking-tight" />
       </section>
 
       <AboutIntro />
 
-      <section className="mx-auto max-w-[1760px] px-5 md:px-10 py-24">
-        <h2 className="mb-12 font-display text-3xl font-semibold tracking-tight md:text-4xl">Our values</h2>
+      <section className="mx-auto max-w-[1760px] px-5 md:px-10 py-16 md:py-24">
+        <h2 className="mb-12 font-display text-4xl font-semibold tracking-tight">Our values</h2>
         <div className="grid gap-6 md:grid-cols-3">
           {values.map((v, i) => (
             <Reveal key={v.title} delay={i * 0.15} className="rounded-2xl border border-line bg-ink-2 p-8">
@@ -56,8 +56,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1760px] px-5 md:px-10 py-24">
-        <h2 className="mb-12 font-display text-3xl font-semibold tracking-tight md:text-4xl">Milestones</h2>
+      <section className="mx-auto max-w-[1760px] px-5 md:px-10 py-16 md:py-24">
+        <h2 className="mb-12 font-display text-4xl font-semibold tracking-tight">Milestones</h2>
         <ol className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-4">
           {milestones.map((m, i) => (
             <li key={m.year} className="bg-ink">
@@ -70,8 +70,8 @@ export default function AboutPage() {
         </ol>
       </section>
 
-      <section className="mx-auto max-w-5xl px-5 md:px-10 py-24">
-        <ScrollFillText className="font-display text-2xl font-medium leading-snug md:text-3xl" text="Our mission is simple: give every scientist instruments they can trust and software that gets out of their way — so they can focus on the science." />
+      <section className="mx-auto max-w-5xl px-5 md:px-10 py-16 md:py-24">
+        <ScrollFillText className="font-display text-3xl font-medium leading-snug" text="Our mission is simple: give every scientist instruments they can trust and software that gets out of their way — so they can focus on the science." />
       </section>
 
       <Team />

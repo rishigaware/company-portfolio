@@ -76,6 +76,7 @@ export function WorldMap({ width, height, countries, pins, arcs }: Props) {
             textAnchor={p.labelLeft ? "end" : "start"}
             fontSize={13}
             fontWeight={600}
+            className="hidden sm:inline"
             style={{ fill: "var(--t-fg)", paintOrder: "stroke", stroke: "var(--t-surface)", strokeWidth: 4 }}
           >
             {p.city}

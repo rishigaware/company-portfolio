@@ -16,8 +16,8 @@ const hotspots = [
 export function FeatureWalkthrough({ product }: { product: Product }) {
   const [active, setActive] = useState(0);
   return (
-    <section className="mx-auto max-w-[1760px] px-5 md:px-10 py-24">
-      <h2 className="mb-12 font-display text-3xl font-semibold tracking-tight md:text-4xl">Key features</h2>
+    <section className="mx-auto max-w-[1760px] px-5 md:px-10 py-16 md:py-24">
+      <h2 className="mb-12 font-display text-4xl font-semibold tracking-tight">Key features</h2>
       <div className="grid gap-12 md:grid-cols-2">
         <div className="md:sticky md:top-28 md:h-[70vh]">
           <div className="relative">
