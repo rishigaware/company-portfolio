@@ -8,7 +8,7 @@ import { ProductVisual } from "@/components/ui/ProductVisual";
 import { TiltCard } from "@/components/ui/TiltCard";
 
 const filters: ("All" | ProductCategory)[] = ["All", "Instrument", "Software", "Consumables"];
-const filterLabel = (f: (typeof filters)[number]) => (f === "All" ? "All products" : f === "Consumables" ? f : `${f}s`);
+const filterLabel = (f: (typeof filters)[number]) => ({ All: "All products", Instrument: "Instruments", Software: "Software", Consumables: "Consumables" })[f];
 
 /** Filterable grid with animated pill + layout (FLIP) transitions. All products are in the HTML for SEO. */
 export function ProductGrid() {

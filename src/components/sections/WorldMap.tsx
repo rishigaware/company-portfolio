@@ -2,7 +2,13 @@
 
 import { motion } from "framer-motion";
 
-export type MapPin = { city: string; x: number; y: number; hq: boolean; labelLeft: boolean };
+export type MapPin = {
+  city: string;
+  x: number;
+  y: number;
+  hq: boolean;
+  labelLeft: boolean;
+};
 
 type Props = {
   width: number;
@@ -15,14 +21,21 @@ type Props = {
 /** Renders the projected world map; routes draw in from HQ and office pins pulse. Colours follow the active theme. */
 export function WorldMap({ width, height, countries, pins, arcs }: Props) {
   return (
-    <svg viewBox={`0 0 ${width} ${height}`} className="h-auto w-full" role="img" aria-label="World map showing GAMP Lifetech office locations">
+    <svg
+      viewBox={`0 0 ${width} ${height}`}
+      className="h-auto w-full"
+      role="img"
+      aria-label="World map showing demo office locations"
+    >
       <g>
         {countries.map((c, i) => (
           <path
             key={`${c.name}-${i}`}
             d={c.d}
             style={{
-              fill: c.active ? "color-mix(in srgb, var(--t-primary) 28%, var(--t-surface-2))" : "var(--t-surface-2)",
+              fill: c.active
+                ? "color-mix(in srgb, var(--t-primary) 28%, var(--t-surface-2))"
+                : "var(--t-surface-2)",
               stroke: "var(--t-bg)",
             }}
             strokeWidth={0.6}
@@ -43,7 +56,11 @@ export function WorldMap({ width, height, countries, pins, arcs }: Props) {
           initial={{ pathLength: 0, opacity: 0 }}
           whileInView={{ pathLength: 1, opacity: 1 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 1.4, delay: 0.3 + i * 0.25, ease: "easeInOut" }}
+          transition={{
+            duration: 1.4,
+            delay: 0.3 + i * 0.25,
+            ease: "easeInOut",
+          }}
         />
       ))}
 
@@ -63,7 +80,10 @@ export function WorldMap({ width, height, countries, pins, arcs }: Props) {
             cx={p.x}
             cy={p.y}
             r={p.hq ? 7 : 5}
-            style={{ fill: p.hq ? "var(--t-primary)" : "var(--t-accent)", stroke: "var(--t-bg)" }}
+            style={{
+              fill: p.hq ? "var(--t-primary)" : "var(--t-accent)",
+              stroke: "var(--t-bg)",
+            }}
             strokeWidth={2}
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
@@ -77,7 +97,12 @@ export function WorldMap({ width, height, countries, pins, arcs }: Props) {
             fontSize={13}
             fontWeight={600}
             className="hidden sm:inline"
-            style={{ fill: "var(--t-fg)", paintOrder: "stroke", stroke: "var(--t-surface)", strokeWidth: 4 }}
+            style={{
+              fill: "var(--t-fg)",
+              paintOrder: "stroke",
+              stroke: "var(--t-surface)",
+              strokeWidth: 4,
+            }}
           >
             {p.city}
           </text>

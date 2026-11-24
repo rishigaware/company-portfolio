@@ -24,7 +24,7 @@ export default function ContactPage() {
   ];
 
   return (
-    <section className="mx-auto max-w-[1760px] px-5 md:px-10 pb-20 md:pb-32 pt-32 md:pt-36">
+    <section className="mx-auto max-w-[1760px] px-5 md:px-10 pb-20 md:pb-32 pt-28 md:pt-36 lg:pt-44">
       <JsonLd data={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Contact", path: "/contact" }])} />
       <p className="mb-4 text-xs uppercase tracking-[0.3em] text-teal">Contact us</p>
       <SplitReveal as="h1" text="Let's talk about your lab." highlight={["lab."]} className="mb-12 font-display text-h1 font-semibold tracking-tight" />

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function ProductsPage() {
   return (
-    <section className="mx-auto max-w-[1760px] px-5 md:px-10 pb-20 md:pb-32 pt-32 md:pt-36">
+    <section className="mx-auto max-w-[1760px] px-5 md:px-10 pb-20 md:pb-32 pt-28 md:pt-36 lg:pt-44">
       <JsonLd
         data={[
           breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Products", path: "/products" }]),

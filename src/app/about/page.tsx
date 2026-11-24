@@ -37,7 +37,7 @@ export default function AboutPage() {
   return (
     <>
       <JsonLd data={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "About", path: "/about" }])} />
-      <section className="mx-auto max-w-[1760px] px-5 md:px-10 pb-16 pt-32 md:pt-36">
+      <section className="mx-auto max-w-[1760px] px-5 md:px-10 pb-16 pt-28 md:pt-36 lg:pt-44">
         <p className="mb-4 text-xs uppercase tracking-[0.3em] text-teal">About {siteConfig.name}</p>
         <SplitReveal as="h1" text="We make lab work measurable, traceable and effortless." highlight={["measurable,", "traceable"]} className="max-w-4xl font-display text-h1 font-semibold tracking-tight" />
       </section>

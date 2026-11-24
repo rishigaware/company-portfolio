@@ -19,7 +19,7 @@ export default function CaseStudiesPage() {
   return (
     <>
       <JsonLd data={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Case Studies", path: "/case-studies" }])} />
-      <section className="mx-auto max-w-[1760px] px-5 md:px-10 pb-12 pt-32 md:pt-36">
+      <section className="mx-auto max-w-[1760px] px-5 md:px-10 pb-12 pt-28 md:pt-36 lg:pt-44">
         <p className="mb-4 text-xs uppercase tracking-[0.3em] text-teal">Portfolio</p>
         <SplitReveal as="h1" text="Results our customers can measure." highlight={["measure."]} className="max-w-4xl font-display text-h1 font-semibold tracking-tight" />
         <p className="mt-5 max-w-2xl text-base text-mist">Real outcomes from labs that moved to our instruments and software. (Dummy content.)</p>

@@ -4,12 +4,14 @@
  * and every title, meta tag, sitemap entry, OG image and JSON-LD block updates.
  */
 export const siteConfig = {
-  name: "GAMP Lifetech",
+  name: "demo",
   shortName: "GAMP",
   tagline: "Precision instruments & validated software for life sciences",
   description:
-    "GAMP Lifetech builds laboratory instruments and GxP-compliant software that help pharma, biotech and QC labs measure accurately, stay compliant and ship faster.",
-  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://www.gamplifetech.com").replace(/\/$/, ""),
+    "demo builds laboratory instruments and GxP-compliant software that help pharma, biotech and QC labs measure accurately, stay compliant and ship faster.",
+  url: (
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.gamplifetech.com"
+  ).replace(/\/$/, ""),
   locale: "en_US",
   keywords: [
     "laboratory instruments",
@@ -41,4 +43,5 @@ export const siteConfig = {
 
 export type SiteConfig = typeof siteConfig;
 
-export const absoluteUrl = (path = "/") => `${siteConfig.url}${path.startsWith("/") ? path : `/${path}`}`;
+export const absoluteUrl = (path = "/") =>
+  `${siteConfig.url}${path.startsWith("/") ? path : `/${path}`}`;

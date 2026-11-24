@@ -47,7 +47,7 @@ export default async function ProductPage({ params }: Props) {
         ]}
       />
 
-      <header className="relative mx-auto grid max-w-[1760px] overflow-x-clip items-center gap-12 px-5 md:px-10 pb-16 pt-32 md:pt-36 md:grid-cols-2">
+      <header className="relative mx-auto grid max-w-[1760px] overflow-x-clip items-center gap-12 px-5 md:px-10 pb-16 pt-28 md:pt-36 lg:pt-44 md:grid-cols-2">
         <div aria-hidden className="absolute left-0 top-20 h-96 w-96 rounded-full blur-[140px]" style={{ background: `${p.accent}33` }} />
         <div className="relative">
           <nav aria-label="Breadcrumb" className="mb-6 text-sm text-mist">
