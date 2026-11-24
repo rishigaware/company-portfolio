@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+/*
+ * THEME TOKENS
+ * ink   = page background      ink-2 = card surface     ink-3 = raised surface
+ * snow  = main text            mist  = muted text       line  = borders
+ * teal  = primary accent       sky / violet = secondary accents
+ * (Names are kept short for the utilities: bg-ink, text-snow, bg-teal …)
+ */
+@theme inline {
+  --color-ink: var(--t-bg);
+  --color-ink-2: var(--t-surface);
+  --color-ink-3: var(--t-surface-2);
+  --color-line: var(--t-line);
+  --color-mist: var(--t-muted);
+  --color-snow: var(--t-fg);
+  --color-teal: var(--t-primary);
+  --color-sky: var(--t-accent);
+  --color-violet: var(--t-accent-2);
+}
+
+:root,
+[data-theme="clinical"] {
+  --t-bg: #ffffff;
+  --t-surface: #f3f7fb;
+  --t-surface-2: #e6eef6;
+  --t-line: rgb(11 19 36 / 0.1);
+  --t-muted: #55657c;
+  --t-fg: #0b1324;
+  --t-primary: #0d9488;
+  --t-accent: #2563eb;
+  --t-accent-2: #7c3aed;
+  --t-shadow: rgb(11 19 36 / 0.12);
+  color-scheme: light;
+}
+
+[data-theme="ivory"] {
+  --t-bg: #fbf8f3;
+  --t-surface: #f3ede3;
+  --t-surface-2: #e8dfcf;
+  --t-line: rgb(28 25 23 / 0.1);
+  --t-muted: #6b625a;
+  --t-fg: #1c1917;
+  --t-primary: #c2410c;
+  --t-accent: #b45309;
+  --t-accent-2: #be185d;
+  --t-shadow: rgb(28 25 23 / 0.12);
+  color-scheme: light;
+}
+
+[data-theme="midnight"] {
+  --t-bg: #050b14;
+  --t-surface: #0a1424;
+  --t-surface-2: #12203a;
+  --t-line: rgb(255 255 255 / 0.08);
+  --t-muted: #94a3b8;
+  --t-fg: #e8eef7;
+  --t-primary: #2dd4bf;
+  --t-accent: #60a5fa;
+  --t-accent-2: #a78bfa;
+  --t-shadow: rgb(0 0 0 / 0.6);
+  color-scheme: dark;
+}
+
+[data-theme="graphite"] {
+  --t-bg: #0c0a09;
+  --t-surface: #1c1917;
+  --t-surface-2: #292524;
+  --t-line: rgb(255 255 255 / 0.08);
+  --t-muted: #a8a29e;
+  --t-fg: #f5f5f4;
+  --t-primary: #fb923c;
+  --t-accent: #fbbf24;
+  --t-accent-2: #f472b6;
+  --t-shadow: rgb(0 0 0 / 0.6);
+  color-scheme: dark;
+}
+
+@theme {
+  --font-display: var(--font-heading), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --animate-marquee: marquee 30s linear infinite;
+  --animate-gradient: gradient 14s ease infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes gradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+}
+
+html {
+  background: var(--t-bg);
+  color: var(--t-fg);
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--t-bg);
+  transition: background-color 0.4s ease, color 0.4s ease;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+::selection { background: var(--t-primary); color: var(--t-bg); }
+
+/* Theme switch: circular reveal from the clicked button (View Transitions API) */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* Lenis */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+.text-gradient {
+  background: linear-gradient(90deg, var(--color-teal), var(--color-sky), var(--color-violet), var(--color-teal));
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: var(--animate-gradient);
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--t-fg) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--t-fg) 6%, transparent) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+}
+
+/* Native CSS scroll-driven animation (progressive enhancement) */
+@supports (animation-timeline: view()) {
+  .reveal-up {
+    animation: reveal-up linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+  }
+  @keyframes reveal-up {
+    from { opacity: 0; transform: translateY(60px) scale(0.96); }
+    to { opacity: 1; transform: none; }
+  }
+}
+
+@media (pointer: fine) {
+  .has-custom-cursor, .has-custom-cursor a, .has-custom-cursor button { cursor: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
