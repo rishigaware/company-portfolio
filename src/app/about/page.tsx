@@ -9,6 +9,9 @@ import { Certifications } from "@/components/home/Certifications";
 import { CtaBand } from "@/components/home/CtaBand";
 import { JsonLd, breadcrumbSchema } from "@/components/seo/JsonLd";
 import { Team } from "@/components/sections/Team";
+import { FounderSpotlight } from "@/components/sections/FounderSpotlight";
+import { PhotoSliderSection } from "@/components/media/PhotoSlider";
+import { lifePhotos } from "@/data/content";
 import { Awards } from "@/components/sections/Awards";
 import { GlobalPresence } from "@/components/sections/GlobalPresence";
 
@@ -43,6 +46,7 @@ export default function AboutPage() {
       </section>
 
       <AboutIntro />
+      <FounderSpotlight />
 
       <section className="mx-auto max-w-[1760px] px-5 md:px-10 py-16 md:py-24">
         <h2 className="mb-12 font-display text-4xl font-semibold tracking-tight">Our values</h2>
@@ -75,6 +79,13 @@ export default function AboutPage() {
       </section>
 
       <Team />
+      <PhotoSliderSection
+        eyebrow="Life at our company"
+        title="The people behind every instrument"
+        text="Team days, training, award nights and the lab where it all happens."
+        items={lifePhotos}
+        label="Company life photos"
+      />
       <Awards />
       <GlobalPresence />
       <ProcessLine />

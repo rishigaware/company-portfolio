@@ -14,6 +14,8 @@ import { GalleryParallax } from "@/components/sections/GalleryParallax";
 import { GlobalPresence } from "@/components/sections/GlobalPresence";
 import { NewsEvents } from "@/components/sections/NewsEvents";
 import { Faq } from "@/components/sections/Faq";
+import { PhotoSliderSection } from "@/components/media/PhotoSlider";
+import { eventPhotos } from "@/data/content";
 import { ClientsShowcase } from "@/components/sections/ClientsShowcase";
 import { ServicesTeaser, SolutionsTeaser } from "@/components/home/OfferingsTeasers";
 
@@ -36,6 +38,13 @@ export default function HomePage() {
       <GlobalPresence />
       <Testimonials />
       <NewsEvents />
+      <PhotoSliderSection
+        eyebrow="Events & exhibitions"
+        title="Meet us around the world"
+        text="Trade shows, summits and masterclasses where our team shares what we have learned."
+        items={eventPhotos}
+        label="Events and exhibitions photos"
+      />
       <Faq />
       <Certifications />
       <CtaBand />

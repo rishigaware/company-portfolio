@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { team } from "@/data/content";
+import { PhotoFrame } from "@/components/media/PhotoFrame";
 
 /** Leadership cards that flip in 3D on hover / focus to show a short bio. */
 export function Team() {
@@ -19,18 +20,19 @@ export function Team() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.7 }}
-              className="group h-72 [perspective:1000px]"
+              className="group h-80 [perspective:1000px]"
               tabIndex={0}
             >
               <div className="relative h-full w-full rounded-2xl transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] group-focus:[transform:rotateY(180deg)]">
                 <div className="absolute inset-0 flex flex-col justify-end overflow-hidden rounded-2xl border border-line bg-ink-2 p-6 [backface-visibility:hidden]">
-                  <div
-                    aria-hidden
-                    className="absolute inset-x-0 top-0 flex h-48 items-center justify-center font-display text-5xl font-bold text-white"
-                    style={{ background: `linear-gradient(135deg, var(--t-primary), ${i % 2 ? "var(--t-accent-2)" : "var(--t-accent)"})` }}
-                  >
-                    {initials}
-                  </div>
+                  <PhotoFrame
+                    src={"src" in m ? (m as { src?: string }).src : undefined}
+                    alt={`${m.name}, ${m.role}`}
+                    scene="portrait"
+                    accent={["var(--t-primary)", "var(--t-accent)", "var(--t-accent-2)", "#c2410c"][i % 4]}
+                    className="absolute inset-x-0 top-0 h-52 transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <span className="absolute left-4 top-4 rounded-full bg-black/30 px-2.5 py-1 text-xs font-semibold text-white backdrop-blur">{initials}</span>
                   <h3 className="font-display text-xl font-semibold">{m.name}</h3>
                   <p className="text-sm text-mist">{m.role}</p>
                 </div>

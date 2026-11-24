@@ -123,15 +123,15 @@ export const caseStudies: CaseStudy[] = [
 ];
 
 export const gallery = [
-  { title: "QC lab fit-out", place: "Ahmedabad, IN", tall: true },
-  { title: "Stability suite", place: "Hyderabad, IN", tall: false },
-  { title: "Dissolution bay", place: "Dubai, AE", tall: false },
-  { title: "Bioprocess analytics", place: "Singapore, SG", tall: true },
-  { title: "Training centre", place: "Pune, IN", tall: false },
-  { title: "Service hub", place: "Nairobi, KE", tall: true },
-  { title: "R&D formulation lab", place: "Bengaluru, IN", tall: true },
-  { title: "Walk-in chambers", place: "Riyadh, SA", tall: false },
-  { title: "University core facility", place: "Kuala Lumpur, MY", tall: false },
+  { title: "QC lab fit-out", place: "Ahmedabad, IN", tall: true, src: stock.labMicroscope },
+  { title: "Stability suite", place: "Hyderabad, IN", tall: false, src: stock.labCorridor },
+  { title: "Dissolution bay", place: "Dubai, AE", tall: false, src: stock.labPipette },
+  { title: "Bioprocess analytics", place: "Singapore, SG", tall: true, src: stock.labCells },
+  { title: "Training centre", place: "Pune, IN", tall: false, src: stock.whiteboardTraining },
+  { title: "Service hub", place: "Nairobi, KE", tall: true, src: stock.engineerEquipment },
+  { title: "R&D formulation lab", place: "Bengaluru, IN", tall: true, src: stock.engineerPlans },
+  { title: "Walk-in chambers", place: "Riyadh, SA", tall: false, src: stock.medicinePacks },
+  { title: "University core facility", place: "Kuala Lumpur, MY", tall: false, src: stock.labCells },
 ];
 
 /** Office locations (dummy) — real latitude/longitude, plotted on the world map. */
@@ -145,10 +145,10 @@ export const offices = [
 ];
 
 export const team = [
-  { name: "Dr. Ananya Desai", role: "Founder & CEO", bio: "20+ years in analytical instrumentation and pharma QC." },
-  { name: "Rohan Kapoor", role: "Chief Technology Officer", bio: "Leads software platforms, cloud and integrations." },
-  { name: "Meera Iyer", role: "Head of Quality & Compliance", bio: "Former QA director; GAMP 5 and CSA specialist." },
-  { name: "Vikram Joshi", role: "VP, Global Service", bio: "Runs field service across 22 countries." },
+  { name: "Dr. Ananya Desai", role: "Founder & CEO", bio: "20+ years in analytical instrumentation and pharma QC.", src: stock.founder },
+  { name: "Rohan Kapoor", role: "Chief Technology Officer", bio: "Leads software platforms, cloud and integrations.", src: stock.portraitManSmiling },
+  { name: "Meera Iyer", role: "Head of Quality & Compliance", bio: "Former QA director; GAMP 5 and CSA specialist.", src: stock.portraitWoman },
+  { name: "Vikram Joshi", role: "VP, Global Service", bio: "Runs field service across 22 countries.", src: stock.portraitManSuit },
 ];
 
 export const awards = [
@@ -161,9 +161,9 @@ export const awards = [
 export const integrations = ["SAP", "Oracle", "Empower", "Chromeleon", "Azure", "AWS", "Jira", "Okta"];
 
 export const news = [
-  { date: "2026-10-14", tag: "Product", title: "Spectra X1 now supports 21 CFR Part 11 cloud backup", text: "Automatic, validated backup of all spectral data to LabSphere Cloud." },
-  { date: "2026-09-02", tag: "Event", title: "Meet us at Analytica Asia 2026 — Booth B-214", text: "Live demos of Dissolvo 8 and the new AudiTrail AI review." },
-  { date: "2026-07-21", tag: "Company", title: "New service hub opens in Frankfurt", text: "Faster on-site support and calibration for European customers." },
+  { date: "2026-10-14", tag: "Product", title: "Spectra X1 now supports 21 CFR Part 11 cloud backup", text: "Automatic, validated backup of all spectral data to LabSphere Cloud.", src: stock.medicinePacks },
+  { date: "2026-09-02", tag: "Event", title: "Meet us at Analytica Asia 2026 — Booth B-214", text: "Live demos of Dissolvo 8 and the new AudiTrail AI review.", src: stock.exhibitionHall },
+  { date: "2026-07-21", tag: "Company", title: "New service hub opens in Frankfurt", text: "Faster on-site support and calibration for European customers.", src: stock.officeBuilding },
 ];
 
 export const faqs = [
@@ -208,4 +208,57 @@ export const clientQuotes = [
   { client: "BioGenix", person: "R. Nair", role: "Director, Stability", quote: "The ClimaCell chambers and automated pulls let us scale our biologics stability programme four times without adding headcount." },
   { client: "Zenith Labs", person: "S. Rao", role: "Lab Operations Manager", quote: "Dissolvo 8 tripled our dissolution throughput. Service response is the fastest we've had from any vendor." },
   { client: "MediCore", person: "K. Iyer", role: "QA Director", quote: "ValidPro turned five-month validation projects into three-week cycles. Our auditors actually compliment the documentation now." },
+];
+
+/* ------------------------------------------------------------------
+ * PEOPLE & PHOTOS (dummy). To use a real photo add `src: "/images/<file>.jpg"`
+ * (file placed in /public/images). Without `src`, an illustrated placeholder is shown.
+ * ------------------------------------------------------------------ */
+import type { Scene } from "@/components/media/SceneArt";
+import { stock } from "./stock-photos";
+
+export type Photo = { title: string; caption?: string; date?: string; place?: string; scene: Scene; accent?: string; src?: string };
+
+export const founder = {
+  name: "Dr. Ananya Desai",
+  role: "Founder & Chief Executive Officer",
+  src: stock.founder as string | undefined, // replace with "/images/founder.jpg" (real photo) before going live
+  quote: "We started with one spectrophotometer and a simple promise — every result our customers report should be one they can stand behind.",
+  bio: [
+    "Dr. Desai spent over 20 years in analytical development and quality control at leading pharmaceutical companies before founding the company in 2010.",
+    "She leads our strategy, product vision and customer partnerships, and still personally reviews every new instrument before it ships.",
+  ],
+  chips: ["PhD · Analytical Chemistry", "20+ years in pharma QC", "500+ labs equipped"],
+  journey: [
+    { year: "2010", text: "Founded with our first UV-Vis spectrophotometer" },
+    { year: "2018", text: "Launched LabSphere LIMS, our first software platform" },
+    { year: "2026", text: "Serving 500+ labs across 22 countries" },
+  ],
+  linkedin: "https://www.linkedin.com/",
+  email: "ceo@example.com",
+};
+
+export const lifePhotos: Photo[] = [
+  { title: "Annual team day", caption: "Our whole team, together after a record year.", date: "Mar 2026", place: "Ahmedabad", scene: "team", accent: "var(--t-primary)", src: stock.teamLaptops },
+  { title: "Engineer certification", caption: "Field engineers completing advanced instrument training.", date: "Jan 2026", place: "Training centre", scene: "training", accent: "var(--t-accent)", src: stock.whiteboardTraining },
+  { title: "Inside our R&D lab", caption: "Where new instruments are designed and stress-tested.", date: "Ongoing", place: "R&D centre", scene: "lab", accent: "var(--t-accent-2)", src: stock.labCorridor },
+  { title: "Excellence awards night", caption: "Celebrating customer-service champions.", date: "Dec 2025", place: "Ahmedabad", scene: "award", accent: "#c2410c", src: stock.microphone },
+  { title: "New headquarters", caption: "Our expanded HQ with demo labs and a training wing.", date: "Aug 2025", place: "Ahmedabad", scene: "office", accent: "#0369a1", src: stock.officeBuilding },
+  { title: "Customer workshop", caption: "Hands-on data-integrity workshop for QA leaders.", date: "Jun 2025", place: "Hyderabad", scene: "event", accent: "#7c3aed", src: stock.workshopAudience },
+];
+
+export const eventPhotos: Photo[] = [
+  { title: "Analytica Asia 2026", caption: "Live demos of Dissolvo 8 and AudiTrail AI review.", date: "Sep 2026", place: "Mumbai", scene: "expo", accent: "var(--t-primary)", src: stock.exhibitionHall },
+  { title: "Pharma QC Summit", caption: "Keynote: building inspection-ready QC labs.", date: "Jul 2026", place: "Dubai", scene: "event", accent: "var(--t-accent)", src: stock.presentationStage },
+  { title: "CPHI Middle East", caption: "Launch of the ClimaCell walk-in range.", date: "May 2026", place: "Riyadh", scene: "expo", accent: "var(--t-accent-2)", src: stock.conferenceAudience },
+  { title: "GAMP 5 Masterclass", caption: "Two-day validation masterclass for 120 attendees.", date: "Mar 2026", place: "Bengaluru", scene: "training", accent: "#0369a1", src: stock.keynoteRoom },
+  { title: "Best Lab Informatics award", caption: "LabSphere recognised at the Pharma Tech Awards.", date: "Nov 2025", place: "Singapore", scene: "award", accent: "#c2410c", src: stock.officeMeeting },
+];
+
+export const installPhotos: Photo[] = [
+  { title: "QC lab — NovaPharm", caption: "140 instruments connected across three sites.", place: "Ahmedabad", scene: "install", accent: "#0d9488", src: stock.labMicroscope },
+  { title: "Stability suite — BioGenix", caption: "Six walk-in ClimaCell chambers commissioned.", place: "Hyderabad", scene: "lab", accent: "#2563eb", src: stock.labCorridor },
+  { title: "Dissolution bay — Zenith Labs", caption: "Eight Dissolvo 8 testers with auto-sampling.", place: "Dubai", scene: "install", accent: "#7c3aed", src: stock.labPipette },
+  { title: "University core facility", caption: "Spectra X1 fleet for teaching and research.", place: "Kuala Lumpur", scene: "lab", accent: "#0369a1", src: stock.labCells },
+  { title: "Validation on site — MediCore", caption: "Digital IQ/OQ executed in ValidPro.", place: "Pune", scene: "training", accent: "#c2410c", src: stock.engineerEquipment },
 ];

@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
+import Image from "next/image";
 import { gallery } from "@/data/content";
 
 const tints = ["var(--t-primary)", "var(--t-accent)", "var(--t-accent-2)"];
@@ -25,15 +26,19 @@ export function GalleryParallax() {
         <ul className="grid grid-cols-2 gap-3 sm:hidden">
           {gallery.map((g, i) => (
             <li key={g.title} className={`relative overflow-hidden rounded-xl border border-line bg-ink-2 ${i % 3 === 0 ? "col-span-2 h-44" : "h-36"}`}>
-              <div
-                aria-hidden
-                className="absolute inset-0"
-                style={{ background: `radial-gradient(circle at 30% 30%, color-mix(in srgb, ${tints[i % 3]} 45%, transparent), transparent 65%), linear-gradient(160deg, var(--t-surface-2), var(--t-surface))` }}
-              />
-              <div aria-hidden className="grid-bg absolute inset-0" />
+              {g.src ? (
+                <Image unoptimized={g.src.startsWith("http")} src={g.src} alt={`${g.title}, ${g.place}`} fill sizes="50vw" className="object-cover" />
+              ) : (
+                <div
+                  aria-hidden
+                  className="absolute inset-0"
+                  style={{ background: `radial-gradient(circle at 30% 30%, color-mix(in srgb, ${tints[i % 3]} 45%, transparent), transparent 65%), linear-gradient(160deg, var(--t-surface-2), var(--t-surface))` }}
+                />
+              )}
+              <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-3">
-                <p className="font-display text-sm font-semibold leading-tight">{g.title}</p>
-                <p className="text-[11px] text-mist">{g.place}</p>
+                <p className="font-display text-sm font-semibold leading-tight text-white">{g.title}</p>
+                <p className="text-[11px] text-white/80">{g.place}</p>
               </div>
             </li>
           ))}
@@ -44,7 +49,7 @@ export function GalleryParallax() {
             <Column key={ci} items={col} y={ys[ci]} tint={tints[ci]} />
           ))}
         </div>
-        <p className="mt-10 text-center text-sm text-mist">Placeholder tiles — replace with real installation photos.</p>
+        <p className="mt-10 text-center text-xs text-mist">Stock photos (Unsplash) — replace with your own installation photos.</p>
       </div>
     </section>
   );
@@ -59,15 +64,19 @@ function Column({ items, y, tint }: { items: typeof gallery; y: MotionValue<numb
           data-cursor="hover"
           className={`group relative overflow-hidden rounded-2xl border border-line bg-ink-2 ${g.tall ? "h-[420px]" : "h-[260px]"}`}
         >
-          <div
-            aria-hidden
-            className="absolute inset-0 transition-transform duration-700 group-hover:scale-110"
-            style={{ background: `radial-gradient(circle at 30% 30%, color-mix(in srgb, ${tint} 45%, transparent), transparent 65%), linear-gradient(160deg, var(--t-surface-2), var(--t-surface))` }}
-          />
-          <div aria-hidden className="grid-bg absolute inset-0" />
+          {g.src ? (
+            <Image unoptimized={g.src.startsWith("http")} src={g.src} alt={`${g.title}, ${g.place}`} fill sizes="(max-width: 640px) 50vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-110" />
+          ) : (
+            <div
+              aria-hidden
+              className="absolute inset-0 transition-transform duration-700 group-hover:scale-110"
+              style={{ background: `radial-gradient(circle at 30% 30%, color-mix(in srgb, ${tint} 45%, transparent), transparent 65%), linear-gradient(160deg, var(--t-surface-2), var(--t-surface))` }}
+            />
+          )}
+          <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
           <figcaption className="absolute inset-x-0 bottom-0 translate-y-2 p-6 transition-transform duration-500 group-hover:translate-y-0">
-            <p className="font-display text-xl font-semibold">{g.title}</p>
-            <p className="text-sm text-mist opacity-0 transition-opacity duration-500 group-hover:opacity-100">{g.place}</p>
+            <p className="font-display text-xl font-semibold text-white">{g.title}</p>
+            <p className="text-sm text-white/80 opacity-0 transition-opacity duration-500 group-hover:opacity-100">{g.place}</p>
           </figcaption>
         </figure>
       ))}

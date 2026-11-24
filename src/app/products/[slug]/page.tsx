@@ -9,6 +9,8 @@ import { Reveal } from "@/components/motion/Reveal";
 import { Magnetic } from "@/components/motion/Magnetic";
 import { ProductVisual } from "@/components/ui/ProductVisual";
 import { FeatureWalkthrough } from "@/components/products/FeatureWalkthrough";
+import { PhotoSliderSection } from "@/components/media/PhotoSlider";
+import { stock } from "@/data/stock-photos";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -79,6 +81,18 @@ export default async function ProductPage({ params }: Props) {
       </header>
 
       <FeatureWalkthrough product={p} />
+
+      <PhotoSliderSection
+        eyebrow="Gallery"
+        title={`${p.name} in action`}
+        items={[
+          { title: `${p.name}`, caption: p.tagline, scene: p.category === "Software" ? "training" : "install", accent: p.accent },
+          { title: "In a QC lab", caption: "Typical set-up in a regulated pharma QC laboratory.", scene: "lab", accent: p.accent, src: p.category === "Software" ? stock.labCorridor : stock.labMicroscope },
+          { title: "Installation & training", caption: "Engineers hand over with on-site operator training.", scene: "training", accent: p.accent, src: stock.whiteboardTraining },
+          { title: "At exhibitions", caption: `Live ${p.name} demos at trade shows worldwide.`, scene: "expo", accent: p.accent, src: stock.exhibitionHall },
+        ]}
+        label={`${p.name} photo gallery`}
+      />
 
       <section className="mx-auto max-w-[1760px] px-5 md:px-10 py-16 md:py-24">
         <h2 className="mb-10 font-display text-4xl font-semibold">Technical specifications</h2>

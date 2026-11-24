@@ -6,6 +6,8 @@ import { SplitReveal } from "@/components/motion/SplitReveal";
 import { Reveal } from "@/components/motion/Reveal";
 import { JsonLd, breadcrumbSchema } from "@/components/seo/JsonLd";
 import { GalleryParallax } from "@/components/sections/GalleryParallax";
+import { PhotoSliderSection } from "@/components/media/PhotoSlider";
+import { installPhotos } from "@/data/content";
 import { CtaBand } from "@/components/home/CtaBand";
 
 export const metadata: Metadata = {
@@ -70,6 +72,14 @@ export default function CaseStudiesPage() {
           </article>
         ))}
       </div>
+
+      <PhotoSliderSection
+        eyebrow="On site"
+        title="Installations in the field"
+        text="Snapshots from commissioning, validation and handover at customer sites."
+        items={installPhotos}
+        label="Installation photos"
+      />
 
       <GalleryParallax />
 
