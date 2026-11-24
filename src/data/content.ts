@@ -201,3 +201,11 @@ export const clientLogos: ClientLogo[] = [
   { name: "AquaMed", sector: "Ophthalmics", mark: "drop", color: "#0369a1" },
   { name: "Lumina Bio", sector: "Research institute", mark: "square", color: "#e11d48" },
 ];
+
+/** DUMMY client quotes shown in the rotating card of the clients section. */
+export const clientQuotes = [
+  { client: "NovaPharm", person: "Dr. A. Mehta", role: "Head of Quality Control", quote: "Three sites, one connected QC lab. Batch release is now 48% faster and our last inspection had zero data-integrity findings." },
+  { client: "BioGenix", person: "R. Nair", role: "Director, Stability", quote: "The ClimaCell chambers and automated pulls let us scale our biologics stability programme four times without adding headcount." },
+  { client: "Zenith Labs", person: "S. Rao", role: "Lab Operations Manager", quote: "Dissolvo 8 tripled our dissolution throughput. Service response is the fastest we've had from any vendor." },
+  { client: "MediCore", person: "K. Iyer", role: "QA Director", quote: "ValidPro turned five-month validation projects into three-week cycles. Our auditors actually compliment the documentation now." },
+];

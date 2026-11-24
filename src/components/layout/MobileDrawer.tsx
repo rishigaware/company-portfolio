@@ -51,7 +51,7 @@ export function MobileDrawer({ open, onClose, pathname }: { open: boolean; onClo
   return createPortal(
     <AnimatePresence>
       {open && (
-        <div className="fixed inset-0 z-[65] lg:hidden" role="dialog" aria-modal="true" aria-label="Site menu">
+        <div className="fixed inset-0 z-[65] lg:hidden" role="dialog" aria-modal="true" aria-label="Site menu" data-lenis-prevent>
           <motion.button
             aria-label="Close menu"
             className="absolute inset-0 bg-black/40 backdrop-blur-sm"
@@ -66,9 +66,9 @@ export function MobileDrawer({ open, onClose, pathname }: { open: boolean; onClo
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", stiffness: 320, damping: 34 }}
-            className="absolute inset-y-0 right-0 flex w-[min(88vw,400px)] flex-col bg-ink shadow-[-20px_0_60px_var(--t-shadow)]"
+            className="absolute right-0 top-0 flex h-[100dvh] w-[min(88vw,400px)] flex-col bg-ink shadow-[-20px_0_60px_var(--t-shadow)]"
           >
-            <div className="flex items-center justify-between border-b border-line px-5 py-4">
+            <div className="flex shrink-0 items-center justify-between border-b border-line px-5 py-4">
               <Link href="/" onClick={onClose} className="flex items-center gap-2 font-display font-semibold">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/icon.svg" alt="" width={26} height={26} />
@@ -81,7 +81,7 @@ export function MobileDrawer({ open, onClose, pathname }: { open: boolean; onClo
               </button>
             </div>
 
-            <ul className="flex-1 overflow-y-auto px-3 py-3">
+            <ul className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-3 py-3 [-webkit-overflow-scrolling:touch]" data-lenis-prevent>
               {[{ label: "Home", href: "/" } as (typeof topNav)[number], ...topNav].map((item, i) => {
                 const active = item.href === "/" ? pathname === "/" : isActive(item, pathname);
                 const isOpen = item.mega && expanded === item.mega;
@@ -140,7 +140,7 @@ export function MobileDrawer({ open, onClose, pathname }: { open: boolean; onClo
               })}
             </ul>
 
-            <div className="space-y-3 border-t border-line p-5">
+            <div className="shrink-0 space-y-3 border-t border-line p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))]">
               <Link href="/contact" onClick={onClose} className="block rounded-full bg-teal py-3.5 text-center font-medium text-ink">
                 Request a quote
               </Link>
